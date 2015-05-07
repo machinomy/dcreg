@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+
+var dcreg = require('dcreg');
+
+var dockerEndpoint = {
+  socketPath: '/var/run/docker.sock'
+}; 
+
+var consulEndpoint = {
+  host: '127.0.0.1',
+  port: 8500
+};
+
+var loggerParams = {
+    name: 'dcreg'
+};
+
+dcreg.run(dockerEndpoint, consulEndpoint, loggerParams);
