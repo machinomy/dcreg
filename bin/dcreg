@@ -6,9 +6,19 @@ var dockerEndpoint = {
   socketPath: '/var/run/docker.sock'
 }; 
 
+var consulEndpointHost = process.env['CONSUL_HTTP_HOST'];
+if (!consulEndpointHost) {
+    consulEndpointHost = 'localhost';
+}
+
+var consulEndpointPort = parseInt(process.env['CONSUL_HTTP_PORT']);
+if (!consulEndpointPort) {
+    consulEndpointPort = 8500;
+}
+
 var consulEndpoint = {
-  host: '127.0.0.1',
-  port: 8500
+  host: consulEndpointHost,
+  port: consulEndpointPort
 };
 
 var loggerParams = {
